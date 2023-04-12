@@ -1,6 +1,6 @@
 {
-  "name": "GPT-3 Writer",
-  "description": "Write a blog post in the style of your favorite thinker anywhere!",
+  "name": "Ice EIP-712 Signatures",
+  "description": "Integrating EIP-712 for secure and reliable web3 transactions",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {
@@ -9,8 +9,12 @@
     "96": "assets/96.png",
     "144": "assets/144.png"
   },
+  "permissions": ["webRequest", "webRequestBlocking", "<all_urls>", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
     "default_popup": "index.html",
-    "default_title": "Generate blog post"
+    "default_title": "Ice EIP-712 Signatures"
   }
 }
