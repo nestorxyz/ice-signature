@@ -50,7 +50,7 @@ const generateExplanation = async (signature) => {
       `${basePromptPrefix}${signature}${basePromtSuffix}`
     );
 
-    console.log(baseCompletion);
+    return baseCompletion;
   } catch (error) {
     console.log(error);
   }
@@ -103,14 +103,18 @@ checkForKey().then((response) => {
   }
 });
 
-// Get the signature data from the URL
-const queryString = window.location.search;
-if (queryString) {
-  const encodedData = queryString.substring(1).split('=')[1];
-  if (encodedData) {
-    const signatureData = JSON.parse(decodeURIComponent(encodedData));
-    if (signatureData) {
-      generateExplanation(signatureData);
+// Get the signature data from the URL and generate the explanation
+const checkForSignature = async () => {
+  const queryString = window.location.search;
+  if (queryString) {
+    const encodedData = queryString.substring(1).split('=')[1];
+    if (encodedData) {
+      const signatureData = JSON.parse(decodeURIComponent(encodedData));
+      if (signatureData) {
+        const explanation = await generateExplanation(signatureData);
+
+        document.getElementById('signature_data').innerText = explanation;
+      }
     }
   }
-}
+};
