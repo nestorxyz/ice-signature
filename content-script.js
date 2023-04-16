@@ -1,4 +1,4 @@
-async function init() {
+function init() {
   window.addEventListener('message', (event) => {
     const { data } = event;
 
