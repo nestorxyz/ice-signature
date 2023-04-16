@@ -1,3 +1,11 @@
+const queryString = window.location.search;
+const encodedData = queryString.substring(1).split('=')[1];
+const signatureData = JSON.parse(decodeURIComponent(encodedData));
+
+console.log('aice-signature-data', signatureData);
+document.getElementById('signature_data').textContent =
+  JSON.stringify(signatureData);
+
 const checkForKey = () => {
   return new Promise((resolve, reject) => {
     chrome.storage.local.get(['openai-key'], (result) => {
@@ -41,14 +49,5 @@ checkForKey().then((response) => {
   if (response) {
     document.getElementById('key_needed').style.display = 'none';
     document.getElementById('key_entered').style.display = 'block';
-  }
-});
-
-chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-  if (message.event === 'aice-signature-data') {
-    console.log('aice-signature-data', message.data);
-    document.getElementById('signature_data').textContent = JSON.stringify(
-      message.data
-    );
   }
 });
