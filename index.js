@@ -23,8 +23,11 @@ const generate = async (prompt) => {
     body: JSON.stringify({
       model: 'text-davinci-003',
       prompt: prompt,
-      max_tokens: 1250,
       temperature: 0.7,
+      max_tokens: 500,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
       n: 1,
     }),
   });
@@ -38,7 +41,7 @@ const generateExplanation = async (signature) => {
   try {
     const basePromptPrefix = `
     I am going to provide you with signature request information from MetaMask. Usually, this is not user-friendly, so you need to explain to the user what they are really going to sign with their wallet. 
-    use tables if necessary,not use too much text,any mom must understand,avoid showing hexadecimal or technical things,be specific,use emojis if they add value,tell what will happen after sign,instead of chain ID show in text which chain it is,alert if the request looks fraudulent and explain why,if I am going to receive or send tokens or NFTs, tell me which tokens and how much,numbers are important,DONT explain transaction definitions,never include nonce or version
+    not use too much text,format the text,any mom must understand,avoid showing hexadecimal or technical things,be specific,use emojis if they add value,tell what will happen after sign,instead of chain ID show in text which chain it is,alert if the request looks fraudulent and explain why,if I am going to receive or send tokens or NFTs, tell me which tokens and how much,numbers are important,DONT explain transaction definitions,never include nonce or version,tell what this transaction do 
 
     This is the signature request from Metamask:
     `;
@@ -111,10 +114,31 @@ const checkForSignature = async () => {
     if (encodedData) {
       const signatureData = JSON.parse(decodeURIComponent(encodedData));
       if (signatureData) {
+        const signatureContainer = document.getElementById('signature_data');
+
+        const loadingContainer = document.createElement('div');
+        loadingContainer.classList.add('loading_container');
+
+        const spinner = document.createElement('div');
+        spinner.classList.add('spinner');
+        loadingContainer.appendChild(spinner);
+
+        const loadingText = document.createElement('p');
+        loadingText.classList.add('loading_text');
+        loadingText.innerText = 'Analyzing signature...';
+        loadingContainer.appendChild(loadingText);
+
+        signatureContainer.appendChild(loadingContainer);
+
         const explanation = await generateExplanation(signatureData);
 
-        document.getElementById('signature').innerText = explanation;
+        const signatureText = document.createElement('p');
+        signatureText.classList.add('signature');
+        signatureText.innerText = explanation;
+        signatureContainer.replaceChild(signatureText, loadingContainer);
       }
     }
   }
 };
+
+checkForSignature();
