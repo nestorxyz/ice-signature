@@ -113,7 +113,7 @@ const checkForSignature = async () => {
       if (signatureData) {
         const explanation = await generateExplanation(signatureData);
 
-        document.getElementById('signature_data').innerText = explanation;
+        document.getElementById('signature').innerText = explanation;
       }
     }
   }
