@@ -1,6 +1,6 @@
 {
-  "name": "Ice EIP-712 Signatures",
-  "description": "Integrating EIP-712 for secure and reliable web3 transactions",
+  "name": "Ice",
+  "description": "Understand wtf you are signing with your wallet 🤘...using AI",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {
@@ -29,7 +29,7 @@
   "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "index.html",
-    "default_title": "Ice EIP-712 Signatures"
+    "default_title": "Ice"
   },
   "minimum_chrome_version": "92"
 }
