@@ -9,20 +9,44 @@
   </head>
   <body>
     <div class="container">
-      <div id="key_needed" class="input-container">
-        <p class="subtitle">To get started, add your OpenAI API Key!</p>
-        <label for="key_input">API Key:</label>
-        <input id="key_input" type="text" />
-        <button id="save_key_button">Add key</button>
-      </div>
-      <div id="key_entered" class="input-container">
-        <p class="subtitle">You entered your OpenAI API Key.</p>
-        <button id="change_key_button">Change key</button>
-      </div>
-      <div id="signature_data" class="signature-container">
-        <p class="title">Signature Request Information:</p>
-        <p id="signature" class="signature"></p>
-      </div>
+      <header class="header">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 10px;
+          "
+        >
+          <img src="./assets/72.png" alt="Ice" class="ice_logo" />
+          <h1 class="title">ICE</h1>
+        </div>
+        <h2 class="subtitle">
+          Understand wtf you are signing with your wallet 🤘
+        </h2>
+      </header>
+
+      <main>
+        <div id="key_needed" class="input-container">
+          <p class="subtitle">To get started, add your OpenAI API Key!</p>
+          <label for="key_input"
+            >API Key (it will be saved in your browser):
+          </label>
+          <input id="key_input" type="text" />
+          <button class="save_key_button" id="save_key_button">Add key</button>
+        </div>
+        <div id="key_entered" class="input-container">
+          <p class="subtitle">You entered your OpenAI API Key.</p>
+          <button id="change_key_button">Change key</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div id="signature_data" class="signature-container">
+          <p class="subtitle">What are you signing with your wallet? 🧐</p>
+          <p id="signature" class="signature"></p>
+        </div>
+      </main>
     </div>
 
     <script src="index.js" type="text/javascript"></script>

@@ -1,26 +1,37 @@
+/* Remove all default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #key_entered {
   display: none;
 }
 
 body {
-  min-width: 400px;
+  width: 400px;
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background: linear-gradient(45deg, #694fff, #fa3abc, #fd7d12);
 }
 
-.container {
-  max-width: 400px;
-  margin: 0 auto;
+/* Gradient bg header */
+.header {
+  display: flex;
+  flex-direction: column;
   padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0px 0px 8px #ccc;
+  color: #fff;
+}
+
+.ice_logo {
+  width: 42px;
+  border-radius: 50%;
 }
 
 .title {
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 10px;
+  color: white;
 }
 
 .subtitle {
@@ -28,6 +39,15 @@ body {
   margin-bottom: 10px;
 }
 
+/* Main with top rounded */
+main {
+  padding: 16px;
+  border-radius: 20px 20px 0 0;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+/* Form for OPEN AI key */
 .input-container {
   margin-bottom: 10px;
 }
@@ -48,23 +68,29 @@ button {
   padding: 8px;
   border-radius: 4px;
   border: none;
-  background-color: #4caf50;
+  background-color: #694fff;
   color: #fff;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #3e8e41;
+  background-color: #5a30f7;
 }
 
-.signature-container {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.save_key_button {
+  margin-top: 10px;
 }
 
+.divider {
+  margin: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Signature */
 .signature {
   white-space: pre-wrap;
+}
+
+.signature_data_title {
+  font-weight: bold;
 }
