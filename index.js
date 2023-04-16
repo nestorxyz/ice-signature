@@ -43,3 +43,12 @@ checkForKey().then((response) => {
     document.getElementById('key_entered').style.display = 'block';
   }
 });
+
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+  if (message.event === 'aice-signature-data') {
+    console.log('aice-signature-data', message.data);
+    document.getElementById('signature_data').textContent = JSON.stringify(
+      message.data
+    );
+  }
+});

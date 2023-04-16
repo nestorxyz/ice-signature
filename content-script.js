@@ -7,10 +7,8 @@ function init() {
 
       if (metamaskData.data.params && metamaskData.data.params.length > 0) {
         chrome.runtime.sendMessage({
-          message: {
-            event: 'ice-signature-request',
-            data: metamaskData.data,
-          },
+          event: 'ice-signature-request',
+          data: metamaskData.data,
         });
       }
     }
