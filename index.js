@@ -50,7 +50,10 @@ const generateExplanation = async (signature) => {
     `;
 
     const baseCompletion = await generate(
-      `${basePromptPrefix}${signature}${basePromtSuffix}`
+      `${basePromptPrefix}
+      ${signature}
+      
+      ${basePromtSuffix}`
     );
 
     return baseCompletion;
@@ -112,7 +115,7 @@ const checkForSignature = async () => {
   if (queryString) {
     const encodedData = queryString.substring(1).split('=')[1];
     if (encodedData) {
-      const signatureData = JSON.parse(decodeURIComponent(encodedData));
+      const signatureData = JSON.stringify(decodeURIComponent(encodedData));
       if (signatureData) {
         const signatureContainer = document.getElementById('signature_data');
 

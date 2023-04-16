@@ -12,6 +12,7 @@
 html {
   display: flex;
   height: 100vh;
+  overflow: auto;
 }
 
 body {
@@ -59,7 +60,7 @@ main {
   padding: 16px;
   border-radius: 20px 20px 0 0;
   background-color: #fff;
-  overflow: hidden;
+  overflow: auto;
 }
 
 /* Form for OPEN AI key */
@@ -103,7 +104,7 @@ button:hover {
 
 /* Signature */
 .signature {
-  white-space: pre-wrap;
+  white-space: initial;
   font-size: 14px;
 }
 
